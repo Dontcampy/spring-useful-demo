@@ -1,11 +1,15 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-  kotlin("plugin.jpa") version "1.2.71"
+  val kotlinVersion = "1.3.31"
+
+  kotlin("plugin.jpa") version kotlinVersion
   id("org.springframework.boot") version "2.1.5.RELEASE"
   id("io.spring.dependency-management") version "1.0.7.RELEASE"
-  kotlin("jvm") version "1.2.71"
-  kotlin("plugin.spring") version "1.2.71"
+  kotlin("jvm") version kotlinVersion
+  kotlin("plugin.spring") version kotlinVersion
+  kotlin("plugin.allopen") version kotlinVersion
+  kotlin("plugin.noarg") version kotlinVersion
 }
 
 group = "com.dont39"
@@ -17,6 +21,14 @@ repositories {
 }
 
 extra["springCloudVersion"] = "Greenwich.SR1"
+
+allOpen {
+  annotation("com.dont39.springusefuldemo.AllOpen")
+}
+
+noArg {
+  annotation("com.dont39.springusefuldemo.NoArgConstructor")
+}
 
 dependencies {
   implementation("org.springframework.boot:spring-boot-starter-actuator")

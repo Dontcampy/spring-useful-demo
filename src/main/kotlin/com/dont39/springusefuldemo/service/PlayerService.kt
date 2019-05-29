@@ -11,11 +11,15 @@ import org.springframework.stereotype.Service
  * @since 2019/05/24
  */
 interface PlayerService {
+  fun findAllPlayer(): List<PlayerEntity>
+
   fun findPlayerById(id: Long): PlayerEntity?
 
   fun findPlayerByName(name: String): PlayerEntity?
 
   fun save(playerEntity: PlayerEntity): PlayerEntity
+
+  fun delete(id: Long)
 }
 
 @Service
@@ -23,6 +27,11 @@ interface PlayerService {
 class PlayerServiceImpl @Autowired constructor(
     private val playerDao: PlayerDao
 ): PlayerService {
+
+  override fun findAllPlayer(): List<PlayerEntity> {
+    return playerDao.findAll()
+  }
+
   override fun findPlayerById(id: Long): PlayerEntity? {
     return try {
       playerDao.findById(id).get()
@@ -37,5 +46,9 @@ class PlayerServiceImpl @Autowired constructor(
 
   override fun save(playerEntity: PlayerEntity): PlayerEntity {
     return playerDao.save(playerEntity)
+  }
+
+  override fun delete(id: Long) {
+    return playerDao.deleteById(id)
   }
 }

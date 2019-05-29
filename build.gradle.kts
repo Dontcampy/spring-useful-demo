@@ -32,19 +32,22 @@ noArg {
 
 dependencies {
   implementation("org.springframework.boot:spring-boot-starter-actuator")
-  implementation("org.springframework.boot:spring-boot-starter-amqp")
-  implementation("org.springframework.boot:spring-boot-starter-cache")
+//  implementation("org.springframework.boot:spring-boot-starter-amqp")
+//  implementation("org.springframework.boot:spring-boot-starter-cache")
   implementation("org.springframework.boot:spring-boot-starter-data-jpa")
   implementation("org.springframework.boot:spring-boot-starter-data-redis")
   implementation("org.springframework.boot:spring-boot-starter-web")
   implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
   implementation("org.jetbrains.kotlin:kotlin-reflect")
   implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
-  implementation("org.springframework.cloud:spring-cloud-config-server")
-  implementation("org.springframework.cloud:spring-cloud-starter-config")
-  implementation("org.springframework.cloud:spring-cloud-starter-consul-config")
-  implementation("org.springframework.cloud:spring-cloud-starter-consul-discovery")
-  runtimeOnly("org.springframework.boot:spring-boot-devtools")
+//  implementation("org.springframework.cloud:spring-cloud-config-server")
+//  implementation("org.springframework.cloud:spring-cloud-starter-config")
+//  implementation("org.springframework.cloud:spring-cloud-starter-consul-config")
+//  implementation("org.springframework.cloud:spring-cloud-starter-consul-discovery")
+
+  implementation("com.alibaba:fastjson:1.2.57")
+  
+//  runtimeOnly("org.springframework.boot:spring-boot-devtools")
   runtimeOnly("mysql:mysql-connector-java")
   testImplementation("org.springframework.boot:spring-boot-starter-test")
 }

@@ -10,11 +10,12 @@ import javax.persistence.*
 @Table(name = "player", indexes = [
   Index(name = "idx_name", columnList = "name")
 ])
+
 data class PlayerEntity(
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id") // 只是为了展示这个注解的name属性
-    var id: Long,
+    var id: Long?,
 
     @Column
     var name: String

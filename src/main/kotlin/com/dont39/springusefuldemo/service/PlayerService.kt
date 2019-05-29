@@ -14,6 +14,8 @@ interface PlayerService {
   fun findPlayerById(id: Long): PlayerEntity?
 
   fun findPlayerByName(name: String): PlayerEntity?
+
+  fun save(playerEntity: PlayerEntity): PlayerEntity
 }
 
 @Service
@@ -22,10 +24,18 @@ class PlayerServiceImpl @Autowired constructor(
     private val playerDao: PlayerDao
 ): PlayerService {
   override fun findPlayerById(id: Long): PlayerEntity? {
-    return playerDao.findById(id).get()
+    return try {
+      playerDao.findById(id).get()
+    } catch (e: NoSuchElementException) {
+      null
+    }
   }
 
   override fun findPlayerByName(name: String): PlayerEntity? {
     return playerDao.findByName(name)
+  }
+
+  override fun save(playerEntity: PlayerEntity): PlayerEntity {
+    return playerDao.save(playerEntity)
   }
 }

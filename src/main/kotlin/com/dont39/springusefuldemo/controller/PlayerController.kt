@@ -20,6 +20,7 @@ import javax.servlet.http.HttpServletResponse
 class PlayerController @Autowired constructor(
     private val playerService: PlayerService
 ) {
+
   @RequestMapping(path = ["/player"], method = [RequestMethod.GET])
   fun getAllPlayer(): List<PlayerEntity> {
     return playerService.findAllPlayer()

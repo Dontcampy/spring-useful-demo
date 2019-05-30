@@ -1,9 +1,11 @@
 package com.dont39.springusefuldemo.service
 
 import com.dont39.springusefuldemo.AllOpen
+import com.dont39.springusefuldemo.CACHE_PLAYER_ID
 import com.dont39.springusefuldemo.dao.PlayerDao
 import com.dont39.springusefuldemo.entity.PlayerEntity
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.cache.annotation.Cacheable
 import org.springframework.stereotype.Service
 
 /**
@@ -32,6 +34,7 @@ class PlayerServiceImpl @Autowired constructor(
     return playerDao.findAll()
   }
 
+  @Cacheable(cacheNames = [CACHE_PLAYER_ID], key = "#id")
   override fun findPlayerById(id: Long): PlayerEntity? {
     return try {
       playerDao.findById(id).get()

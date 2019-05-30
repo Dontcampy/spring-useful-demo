@@ -4,3 +4,13 @@ spring:
     url: jdbc:mysql://localvm:3306/sud?serverTimezone=UTC
     username: sirius
     password: siriussirius
+#
+#  rabbitmq:
+#    host: localvm
+#    port: 5672
+#    username: sirius
+#    password: sirius
+
+  redis:
+    host: localvm
+    port: 6379

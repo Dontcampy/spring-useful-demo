@@ -1,15 +1,13 @@
 package com.dont39.springusefuldemo.controller
 
-import com.alibaba.fastjson.JSON
 import com.dont39.springusefuldemo.entity.PlayerEntity
 import com.dont39.springusefuldemo.exception.EntityNotFoundException
-import com.dont39.springusefuldemo.msg.CommonResponse
 import com.dont39.springusefuldemo.msg.OkResponse
 import com.dont39.springusefuldemo.service.PlayerService
+import com.dont39.springusefuldemo.util.lzDebug
+import org.slf4j.LoggerFactory
 import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.*
-import javax.servlet.http.HttpServletResponse
 
 /**
  * @author sirius
@@ -21,8 +19,11 @@ class PlayerController @Autowired constructor(
     private val playerService: PlayerService
 ) {
 
+  private val logger = LoggerFactory.getLogger(javaClass)
+
   @RequestMapping(path = ["/player"], method = [RequestMethod.GET])
   fun getAllPlayer(): List<PlayerEntity> {
+    logger.lzDebug { "获取所有玩家" }
     return playerService.findAllPlayer()
   }
 
